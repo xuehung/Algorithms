@@ -173,6 +173,27 @@ for (i in 0..H) {
 
 ---
 
+### Backpack Problem
+Given n items with size A[i], an integer m denotes the size of a backpack. How full you can fill this backpack?
+
+```Java
+public int backPack(int m, int[] A) {
+    int[] dp = new int[m + 1];
+    // for all items
+    for (int i = 0 ; i < A.length ; i++) {
+        for (int w = m ; w - A[i] >= 0 ; w--) {
+            dp[w] = Math.max(
+                    dp[w], // not put this item
+                    dp[w - A[i]] + A[i] // put htis item
+                    );
+        }
+    }
+    return dp[m];
+}
+```
+
+---
+
 ### Find Majority
 
 ### Trapping Rain Water
