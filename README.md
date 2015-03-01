@@ -112,5 +112,67 @@ public int longestValidParentheses(String s) {
 }
 ```
 
-### Trapping Rain Water
+---
 
+### Longest Increasing Subsequence (LIS)
+```Java
+int lis(int[] a) {
+    if (a.length == 0) return 0;
+    stack.push(a[0]);
+    for (int i = 1 ; i < a.length ; i++) {
+        if (stack.peek() < a[i]) {
+            stack.push(a[i]);
+        } else {
+            // can use binary search here
+            int i = k where stack.get(k) is the first number > a[i]
+            stack.set(k, a[i]);
+        }
+    }
+    return stack.size();
+}
+```
+
+---
+
+### Longest Common Subsequence (LCS)
+```Java
+dp[i][j] = LCS of s1.substring(0, i) and s2.substring(0, j)
+if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+    dp[i][j] = dp[i - 1][j - 1]
+} else {
+    dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j])
+}
+```
+
+---
+
+### Largest Empty Rectangle
+```Java
+Build dp[][] where dp[i][j] is the histogram height at array[i][j]
+for (i in 0..H) {
+    for (j in 0..W) {
+        int h = dp[i][j];
+        if (stack.isEmpty() || h > dp[i][stack.top()]) {
+            stack.push(j)
+        } else {
+            while(!stack.isEmpty() && h < dp[i][stack.top()]) {
+                max = Math.max(max, h * (j - stack.top()))
+                stack.pop()
+            }
+            if (stack.isEmpty() || h > dp[i][stack.top()]) {
+                stack.push(j)
+            }
+        }
+    }
+    // do similar with the remaing elements in the stack
+    area = dp[i][stack.top()] * (W - stack.top())
+    max = Math.max(area, max)
+}
+```
+[Solution](http://www.csie.ntnu.edu.tw/~u91029/MaximumSubarray.html#2)
+
+---
+
+### Find Majority
+
+### Trapping Rain Water
