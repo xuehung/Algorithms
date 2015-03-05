@@ -32,3 +32,34 @@ void writer(void) {
     }
 }
 ```
+
+## Producer-Consumer Problem
+
+```C
+sturct sp {
+    sem_t mutex; /* initialized with 1 */
+    sem_t slots; /* available spaces, initialized with n */
+    sem_t items; /* initialized with 0 */
+}
+```
+#### Producers
+```C
+void produce(*sp) {
+    P(&sp->slots);
+    P(&sp->mutex);
+    /* insert one item */
+    V(&sp->mutex);
+    V(&sp->items);
+}
+```
+
+#### Consumer
+```C
+void consumer(*sp) {
+    P(&sp->items);
+    P(&sp->mutex);
+    /* remove one item */
+    V(&sp->mutex);
+    V(&sp->slots);
+}
+```
