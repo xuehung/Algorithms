@@ -191,6 +191,28 @@ public int backPack(int m, int[] A) {
     return dp[m];
 }
 ```
+What if each item has unlimited quantity? How to solve this problem?
+---
+
+### Lowest Common Ancestor in a Binary Tree
+ - Find the pathes to n1 and n2, then compare pathes
+ - Resursive
+```Java
+LCA(root, n1, n2) {
+    if (root == null) return null;
+    if (root.val == n1 || root.val == n2) return root;
+    Node left = LCA(root.left, n1, n2);
+    Node right = LCA(root.right, n1, n2);
+    if (left != null && right != null) return root;
+    return (left != null) ? left : right;
+}
+```
+You can do better in binary search tree. How?
+
+---
+
+### Money Changing Problem
+
 
 ---
 
