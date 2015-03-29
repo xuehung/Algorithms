@@ -216,6 +216,10 @@ You can do better in binary search tree. How?
 
 ---
 
+### Given an array arr[], find the maximum j – i such that arr[j] > arr[i]
+
+---
+
 ### Find Majority
 
 ### Trapping Rain Water
